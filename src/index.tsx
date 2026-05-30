@@ -12,11 +12,11 @@ import './index.css'
 // TODO: add toast notifications
 
 interface IRemindrUiProps {
-	onCheckPin: (pin: string) => boolean
-	onInitialFetch: () => Item[]
-	onAdd: (item: Item) => boolean
-	onChecked: (item: Item) => boolean
-	onDelete: (id: string) => boolean
+	onCheckPin: (pin: string) => Promise<boolean>
+	onInitialFetch: () => Promise<Item[]>
+	onAdd: (item: Item) => Promise<boolean>
+	onChecked: (item: Item) => Promise<boolean>
+	onDelete: (id: string) => Promise<boolean>
 	fetchDataInterface: (row: unknown) => Item
 }
 
@@ -37,7 +37,7 @@ function RemindrUi({
 		if(isPinCorrect) {
 			;(async function fetchData() {
 				setIsLoadingItems(true)
-				const data = onInitialFetch()
+				const data = await onInitialFetch()
 
 				if (data) {
 					setItems(data.map(fetchDataInterface))
@@ -49,7 +49,7 @@ function RemindrUi({
 	}, [isPinCorrect])
 
 	const handleCheckPin = async (pin: string) => {
-		const authCheck = onCheckPin(pin)
+		const authCheck = await onCheckPin(pin)
 
 		if (authCheck) {
 			setIsPinCorrect(true)
@@ -59,7 +59,7 @@ function RemindrUi({
 	const handleAdd = async () => {
 		if(newItemLabel) {
 			const newItem = { id: uuidv4(), label: newItemLabel, checked: false }
-			const succesfulAdd = onAdd(newItem)
+			const succesfulAdd = await onAdd(newItem)
 
 			if (succesfulAdd) {
 				setItems((prev) => [newItem, ...prev])
@@ -70,7 +70,7 @@ function RemindrUi({
 	}
 
 	const handleDelete = (index: number) => async () => {
-		const succesfulDeletion = onDelete(items[index]['id'])
+		const succesfulDeletion = await onDelete(items[index]['id'])
 
 		if (succesfulDeletion) {
 			const nextItems = [...items]
@@ -88,7 +88,7 @@ function RemindrUi({
 			checked: e.target.checked,
 		}
 
-		const succesfulChecked = onChecked(updatedItem)
+		const succesfulChecked = await onChecked(updatedItem)
 
 		if (succesfulChecked) {
 			const newItems = [...items]
