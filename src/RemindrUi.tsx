@@ -6,7 +6,6 @@ import InputText from './components/InputText'
 import Spinner from './components/Spinner'
 import type { Item } from './lib/types'
 import { uuidv4 } from './lib/utils'
-import './index.css'
 
 // TODO: add pin login persistance (localStorage)
 // TODO: add toast notifications
@@ -98,7 +97,7 @@ function RemindrUi <T> ({
 	}
 
   return (
-		<div className='d-flex justify-content-center align-items-center align-self-center vw-100 vh-100'>
+		<div className='container d-flex justify-content-center align-items-center align-self-center vw-100 vh-100'>
 			{isPinCorrect ?
 				<div className='w-75'>
 					<div className='d-flex w-100 mb-4'>

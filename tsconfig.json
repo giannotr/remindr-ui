@@ -21,6 +21,6 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-  }
+  },
+  "exclude": ["src/**/*.stories.ts", "src/**/*.stories.tsx", "storybook-static"]
 }
-
