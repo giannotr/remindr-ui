@@ -11,23 +11,23 @@ import './index.css'
 // TODO: add pin login persistance (localStorage)
 // TODO: add toast notifications
 
-interface IRemindrUiProps {
+interface IRemindrUiProps<T> {
 	onCheckPin: (pin: string) => Promise<boolean>
-	onInitialFetch: () => Promise<Item[]>
+	onInitialFetch: () => Promise<T[]>
 	onAdd: (item: Item) => Promise<boolean>
 	onChecked: (item: Item) => Promise<boolean>
 	onDelete: (id: string) => Promise<boolean>
-	fetchDataInterface: (row: unknown) => Item
+	fetchDataInterface: (row: T) => Item
 }
 
-function RemindrUi({
+function RemindrUi <T> ({
 	onCheckPin,
 	onInitialFetch,
 	onAdd,
 	onDelete,
 	onChecked,
-	fetchDataInterface = (row) => row as Item
-}: IRemindrUiProps) {
+	fetchDataInterface = (row: T) => ({ ...row } as Item)
+}: IRemindrUiProps<T>) {
 	const [isPinCorrect, setIsPinCorrect] = useState<boolean>(false)
 	const [items, setItems] = useState<Item[]>([])
 	const [isLoadingItems, setIsLoadingItems] = useState<boolean>(false)
