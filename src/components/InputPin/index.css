@@ -1,0 +1,21 @@
+.form-control--otp {
+  line-height: 2.5;
+  height: 3.5rem;
+	font-size: 1.5rem;
+  font-weight: 700 !important;
+  text-align: center;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  background: var(--input-bg) !important;
+}
+
+@media ( min-width: 375px ) {
+  .form-control--otp {
+    line-height: 3;
+    height: 4.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    max-width: 3.5rem;
+  }
+}
