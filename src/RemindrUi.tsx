@@ -97,7 +97,7 @@ function RemindrUi <T> ({
 	}
 
   return (
-		<div className='container d-flex justify-content-center align-items-center align-self-center vw-100 vh-100'>
+		<div className='app-container d-flex justify-content-center align-items-center align-self-center vw-100 vh-100'>
 			{isPinCorrect ?
 				<div className='w-75'>
 					<div className='d-flex w-100 mb-4'>

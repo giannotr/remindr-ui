@@ -65,7 +65,7 @@ body {
 	background: var(--bg);
 }
 
-.container {
+.app-container {
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -91,7 +91,6 @@ h1 {
 
 	@media (max-width: 1024px) {
 		font-size: 36px;
-		margin: 20px 0;
 	}
 }
 
